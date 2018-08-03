@@ -6,7 +6,14 @@
 </template>
 <script>
   import FooterGuide from './components/FooterGuide/FooterGuide'
+
   export default {
+    //获取商家的地址
+    //自动登录的实现
+    mounted(){
+      this.$store.dispatch('getAdderss');
+      this.$store.dispatch('getUser')
+    },
     components:{
       FooterGuide
     }

@@ -65,11 +65,12 @@ export default {
     }
   },
   //模拟订餐的信息
-  async shopGoods({commit}){
+  async shopGoods({commit},cb){
     const result = await reqShopGoods()
     if(result.code===0){
       const goods = result.data;
       commit(RECEIVE_GOODS,{goods})
+      cb && cb()
     }
   },
   //模拟商家信息

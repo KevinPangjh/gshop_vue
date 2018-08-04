@@ -17,13 +17,13 @@
 </template>
 <script>
   import ShopHeader from '../../components/ShopHeader/ShopHeader'
-  
+
   export default {
     components:{
       ShopHeader
     },
     mounted(){
-      this.$store.dispatch('shopGoods');
+      //
       this.$store.dispatch('shopInfo');
       this.$store.dispatch('shopRatings');
     }

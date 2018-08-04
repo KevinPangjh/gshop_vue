@@ -33,7 +33,7 @@
                     <span class="now">￥{{food.price}}</span>
                   </div>
                   <div class="cartcontrol-wrapper">
-                    CartControl组件
+                    <CartControl :food="food"></CartControl>
                   </div>
                 </div>
               </li>
@@ -48,12 +48,17 @@
 <script>
   import {mapState} from 'vuex'
   import BScroll from 'better-scroll'
+
+  import CartControl from '../../../components/CartControl/CartControl'
   export default {
     data(){
       return{
         ScorllY:0,
         tops:[]
       }
+    },
+    components:{
+      CartControl
     },
     computed:{
       ...mapState(['goods']),
@@ -172,7 +177,7 @@
       .food-item
         display: flex
         margin: 18px
-        padding-bottom: 8px
+        padding-bottom: 22px
         bottom-border-1px(rgba(7, 17, 27, 0.1))
         &:last-child
           border-none()

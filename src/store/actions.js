@@ -6,7 +6,9 @@ import {
   REST_USER,
   RECEIVE_GOODS,
   RECEIVE_INFO,
-  RECEIVE_RATINGS
+  RECEIVE_RATINGS,
+  INCREMENT_FOOD_COUNT,
+  DECREMENT_FOOD_COUNT
 } from './mutation-types'
 import {
   reqAddress,
@@ -89,4 +91,11 @@ export default {
       commit(RECEIVE_RATINGS,{ratings})
     }
   },
+  updataFood({commit},{food,isAdd}){
+    if(isAdd){
+      commit(INCREMENT_FOOD_COUNT,{food})
+    }else{
+      commit(DECREMENT_FOOD_COUNT,{food})
+    }
+  }
 }

@@ -18,7 +18,8 @@
           <li class="food-list-hook" v-for="(good,index) in goods" :key="index" >
             <h1 class="title">{{good.name}}</h1>
             <ul>
-              <li class="food-item bottom-border-1px" v-for="(food,index) in good.foods" :key="index">
+              <li class="food-item bottom-border-1px" v-for="(food,index) in good.foods" :key="index"
+              @click="showFood(food)">
                 <div class="icon">
                   <img width="57" height="57"
                        :src="food.icon">
@@ -41,7 +42,9 @@
           </li>
         </ul>
       </div>
+      <ShopCart/>
     </div>
+    <Food :food="food" ref="food" ></Food>
   </div>
 
 </template>
@@ -50,15 +53,20 @@
   import BScroll from 'better-scroll'
 
   import CartControl from '../../../components/CartControl/CartControl'
+  import Food from '../../../components/Food/Food'
+  import ShopCart from '../../../components/ShopCart/ShopCart'
   export default {
     data(){
       return{
         ScorllY:0,
-        tops:[]
+        tops:[],
+        food:{},
       }
     },
     components:{
-      CartControl
+      CartControl,
+      Food,
+      ShopCart
     },
     computed:{
       ...mapState(['goods']),
@@ -99,14 +107,12 @@
       },
       //初始化获得商品的列表的高度
       _initTop(){
-        console.log('aaaa');
         let tops=[];
         let top=0;
         tops.push(top)
         let lis = this.$refs.itemFood.getElementsByClassName('food-list-hook');
         Array.prototype.slice.call(lis).forEach(list=>{
           top += list.clientHeight;
-          console.log(top);
           tops.push(top);
         })
         this.tops = tops;
@@ -115,7 +121,13 @@
         const top = this.tops[index];
         this.ScorllY = top;
         this.scrollRight.scrollTo(0,-top,300)
-      }
+      },
+      showFood(food){
+        //更新food的状态
+        this.food = food
+        // 显示food组件(父组件调用子组件的方法)
+        this.$refs.food.closeFood();
+      },
     }
   }
 </script>

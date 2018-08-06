@@ -1,10 +1,10 @@
 <template>
   <div class="cartcontrol">
     <transition name="move">
-      <div class="iconfont icon-remove_circle_outline" v-show="food.count" @click="updataFood(false)"></div>
+      <div class="iconfont icon-remove_circle_outline" v-show="food.count" @click.stop="updataFood(false)"></div>
     </transition>
     <div class="cart-count" v-show="food.count">{{food.count}}</div>
-    <div class="iconfont icon-add_circle" @click="updataFood(true)"></div>
+    <div class="iconfont icon-add_circle" @click.stop="updataFood(true)"></div>
   </div>
 </template>
 <script>
@@ -21,7 +21,7 @@
   }
 </script>
 
-<style lang="stylus" rel="stylesheet/stylus">
+<style lang="stylus" rel="stylesheet/stylus" scoped>
 
   @import "../../common/stylus/mixins.styl"
   .cartcontrol

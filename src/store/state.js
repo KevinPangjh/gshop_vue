@@ -7,5 +7,6 @@ export default {
   user: {}, //用户的信息保存
   goods: [], //点餐的信息
   info:{},  //商家的信息
-  ratings:[] //评价的信息
+  ratings:[], //评价的信息
+  cartCount:[]  //用户购物车的列表
 }
